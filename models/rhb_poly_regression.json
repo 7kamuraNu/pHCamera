@@ -1,0 +1,62 @@
+{
+  "model": "polynomial_regression",
+  "description": "Power polynomial (no cross terms) of standardized R, H, b*; variables selected by Local MAE (Nakamura & Nagao, Chem. Lett. 2025, 54, upaf018).",
+  "variables": [
+    "R",
+    "H",
+    "b*"
+  ],
+  "degree": 5,
+  "standardization": {
+    "mean": [
+      106.87626803684113,
+      53.69784646955657,
+      154.32425094322426
+    ],
+    "std": [
+      79.18476934463334,
+      38.6981975345093,
+      27.213700253049293
+    ]
+  },
+  "feature_order": [
+    "R^1",
+    "H^1",
+    "b*^1",
+    "R^2",
+    "H^2",
+    "b*^2",
+    "R^3",
+    "H^3",
+    "b*^3",
+    "R^4",
+    "H^4",
+    "b*^4",
+    "R^5",
+    "H^5",
+    "b*^5"
+  ],
+  "coef": [
+    1.1773571949493509,
+    6.283253504151695,
+    0.9677011142151232,
+    1.3422715124763605,
+    2.1322445564100634,
+    -3.6960987332715294,
+    -1.6264684249657861,
+    -1.4261197977555022,
+    1.4687194331562181,
+    -0.7611985779730297,
+    -1.2537341096424823,
+    0.929797328872487,
+    0.688960353090784,
+    0.6769601415203268,
+    -0.43988090772419763
+  ],
+  "intercept": 7.427280307211849,
+  "meta": {
+    "source_file": "models/RHb_model.sav",
+    "sklearn_estimator": "LinearRegression",
+    "sklearn_version_trained": "0.22.2.post1"
+  }
+}

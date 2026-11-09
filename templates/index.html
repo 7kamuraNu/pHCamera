@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#2b3a7a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>pH Camera - Real-time pH scanning</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="title" data-i18n="title">pH Camera</h1>
+    <p class="subtitle" data-i18n="subtitle">Real-time pH scanning</p>
+    <button id="langBtn" class="lang" type="button" aria-label="Switch language">JA</button>
+  </header>
+
+  <main class="stage" id="stage">
+    <video id="video" autoplay playsinline muted></video>
+    <img id="still" alt="" hidden>
+    <div class="overlay">
+      <div class="roi" id="roi" aria-hidden="true"></div>
+      <div class="readout" id="readout" aria-live="polite">--</div>
+      <div class="badge" id="badge" hidden></div>
+    </div>
+    <div class="notice" id="notice" hidden></div>
+  </main>
+
+  <section class="controls">
+    <button id="measureBtn" class="measure" type="button" data-i18n="measure" disabled>MEASURE</button>
+    <div class="secondary">
+      <label class="file">
+        <span data-i18n="upload">Use a photo</span>
+        <input id="fileInput" type="file" accept="image/*" capture="environment">
+      </label>
+      <button id="cameraBtn" type="button" data-i18n="camera" hidden>Back to camera</button>
+      <button id="detailBtn" type="button" data-i18n="details">Details</button>
+    </div>
+    <pre id="detail" class="detail" hidden></pre>
+  </section>
+
+  <section class="results">
+    <h2 data-i18n="previous">Previous Results</h2>
+    <ul id="results" class="swatches"></ul>
+    <button id="clearBtn" type="button" class="clear" data-i18n="clear">Clear</button>
+  </section>
+
+  <footer class="foot">
+    <a href="https://doi.org/10.1093/chemle/upaf018" target="_blank" rel="noopener">Nakamura &amp; Nagao, Chem. Lett. 2025, 54, upaf018</a>
+    &middot; v{{ version }}
+  </footer>
+
+  <canvas id="work" hidden></canvas>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

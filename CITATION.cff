@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "pH Camera: machine learning-based pH quantification from test strip images"
+type: software
+authors:
+  - family-names: Nakamura
+    given-names: Yuto
+    affiliation: "Institutes of Innovation for Future Society, Nagoya University"
+  - family-names: Nagao
+    given-names: Masahiro
+    affiliation: "Graduate School of Environmental Studies, Nagoya University"
+repository-code: "https://github.com/7kamuraNu/pHCamera"
+preferred-citation:
+  type: article
+  title: "Machine learning-based pH quantification from test strip images using multiple color spaces"
+  authors:
+    - family-names: Nakamura
+      given-names: Yuto
+    - family-names: Nagao
+      given-names: Masahiro
+  journal: "Chemistry Letters"
+  volume: 54
+  issue: 2
+  year: 2025
+  start: upaf018
+  doi: 10.1093/chemle/upaf018
+  url: "https://doi.org/10.1093/chemle/upaf018"

@@ -1,7 +1,9 @@
-Flask
-gunicorn
-Jinja2
-scikit-learn
-numpy
-opencv-python-headless
-Pillow
+# Runtime dependencies of the web application (no scikit-learn needed at runtime;
+# the model parameters are read from models/*.json).
+Flask>=3.0,<4
+gunicorn>=21,<24
+numpy>=1.24,<3
+opencv-python-headless>=4.8,<5
+Pillow>=10,<12
+# Only needed for `python app.py --https` (self-signed certificate for phones)
+cryptography>=41
