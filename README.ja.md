@@ -5,6 +5,7 @@
 [![Paper](https://img.shields.io/badge/Chem.%20Lett.%202025-10.1093%2Fchemle%2Fupaf018-1f4e9c)](https://doi.org/10.1093/chemle/upaf018)
 [![CI](https://github.com/7kamuraNu/pHCamera/actions/workflows/ci.yml/badge.svg)](https://github.com/7kamuraNu/pHCamera/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 [English README](README.md)
 
@@ -292,9 +293,10 @@ per_level_mae(y_true, y_pred)  # {pH 水準: MAE}
 
 ## ライセンス
 
-ソースコードとモデルファイルのライセンスは未設定です。再配布の前に著者へご連絡ください。
+ソースコードとモデルファイルは [MIT ライセンス](LICENSE)で公開しています。
 `docs/` 内のグラフィカルアブストラクトと図はオープンアクセス論文からの転載で、著者により
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) でライセンスされています。
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) でライセンスされています。再利用の際は
+論文の引用を添えてください。
 
 ## 著者
 

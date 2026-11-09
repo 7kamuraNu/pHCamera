@@ -5,6 +5,7 @@
 [![Paper](https://img.shields.io/badge/Chem.%20Lett.%202025-10.1093%2Fchemle%2Fupaf018-1f4e9c)](https://doi.org/10.1093/chemle/upaf018)
 [![CI](https://github.com/7kamuraNu/pHCamera/actions/workflows/ci.yml/badge.svg)](https://github.com/7kamuraNu/pHCamera/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 [日本語版 README はこちら](README.ja.md)
 
@@ -305,10 +306,10 @@ A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
 ## License
 
-The license of the source code and model files has not been set yet; please contact the
-authors before redistributing them. The graphical abstract and figures in `docs/` are taken
-from the open-access paper and are licensed
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by the authors.
+The source code and model files are released under the [MIT License](LICENSE).
+The graphical abstract and figures in `docs/` are taken from the open-access paper and are
+licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by the authors; please keep
+the citation when reusing them.
 
 ## Authors
 

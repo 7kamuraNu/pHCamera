@@ -17,6 +17,7 @@ training-set statistics hard-coded in the original demo application.
 from __future__ import annotations
 
 import json
+import math
 import pickle
 import re
 import sys
@@ -82,6 +83,34 @@ def export_regression(reg) -> dict:
     }
 
 
+def one_vs_one_linear_coef(svm) -> np.ndarray:
+    """Pairwise weight vectors of a linear SVC, computed deterministically.
+
+    scikit-learn's ``SVC.coef_`` is a property that multiplies ``dual_coef_`` by
+    the support vectors with BLAS at access time; the summation order (and so
+    the last bits of the result) differs between platforms.  Here every weight
+    is the correctly rounded sum of the same products (``math.fsum``), so the
+    exported JSON is byte-identical on every machine.
+    """
+    dual = np.asarray(svm.dual_coef_, dtype=float)        # (n_class - 1, n_SV)
+    sv = np.asarray(svm.support_vectors_, dtype=float)    # (n_SV, n_features)
+    n_class = dual.shape[0] + 1
+    locs = np.concatenate([[0], np.cumsum(svm.n_support_)])
+    coef = []
+    for c1 in range(n_class):
+        for c2 in range(c1 + 1, n_class):
+            a1, s1 = dual[c2 - 1, locs[c1]:locs[c1 + 1]], sv[locs[c1]:locs[c1 + 1]]
+            a2, s2 = dual[c1, locs[c2]:locs[c2 + 1]], sv[locs[c2]:locs[c2 + 1]]
+            alphas = np.concatenate([a1, a2])
+            vecs = np.concatenate([s1, s2])
+            coef.append([math.fsum(float(a) * float(v) for a, v in zip(alphas, vecs[:, f]))
+                         for f in range(sv.shape[1])])
+    coef = np.array(coef)
+    if not np.allclose(coef, svm.coef_, rtol=1e-12, atol=1e-12):
+        raise SystemExit("deterministic coef differs from scikit-learn's coef_")
+    return coef
+
+
 def export_svm(svm) -> dict:
     if svm.kernel != "linear":
         raise SystemExit("only a linear-kernel SVC can be exported")
@@ -93,7 +122,7 @@ def export_svm(svm) -> dict:
         ),
         "features": ["R", "G", "B"],
         "classes": np.asarray(svm.classes_, dtype=float).tolist(),
-        "coef": np.asarray(svm.coef_, dtype=float).tolist(),
+        "coef": one_vs_one_linear_coef(svm).tolist(),
         "intercept": np.asarray(svm.intercept_, dtype=float).tolist(),
         "meta": {
             "source_file": "models/RGB_SVM_model.sav",
